@@ -1,0 +1,18 @@
+{
+  "timezone": "Etc/UTC",
+  "week_starts_on": "monday",
+  "entrypoints": ["project_context.md"],
+  "roles": {
+    "owner": "Project owner",
+    "approver": "Approver",
+    "contributor": "Contributor",
+    "recipient": "Recipient"
+  },
+  "paths": {
+    "overview": "project_context.md"
+  },
+  "cadences": [
+    {"name": "daily", "trigger": "on_request", "plan": true, "review": true},
+    {"name": "weekly", "trigger": "on_request", "plan": true, "review": true}
+  ]
+}
