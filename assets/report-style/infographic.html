@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+@import url("design.css");
+
+/* ---- Вёрстка инфографики: горизонтальный лист.
+        Цвета и размеры — только переменные из design.css ---- */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:var(--i-body);line-height:1.45;
+     -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+.frame{width:var(--i-width);margin:0 auto;background:var(--sheet);padding:40px var(--i-pad) 44px}
+
+.meta{display:flex;justify-content:space-between;gap:24px;font-size:var(--i-small);color:var(--ink-3);
+      padding-bottom:12px;border-bottom:3px solid var(--indigo)}
+.meta b{color:var(--indigo);font-weight:600}
+
+.head{padding:26px 0 24px;border-bottom:1px solid var(--rule)}
+h1{font-family:var(--serif);font-weight:700;font-size:var(--i-h1);line-height:1.1;letter-spacing:-.012em;
+   margin:0 0 12px;max-width:980px;text-wrap:balance}
+.lede{margin:0;font-size:calc(var(--i-body) + 1px);color:var(--ink-2);max-width:900px}
+
+/* Что сделано и что узнали: 2–4 колонки. */
+.cols{display:grid;grid-template-columns:repeat(var(--n,3),1fr);column-gap:44px;padding:26px 0 24px;
+      border-bottom:1px solid var(--rule)}
+.col svg{display:block;width:150px;height:66px;margin-bottom:12px}
+.col .label{display:block;font-size:var(--i-small);color:var(--ink-3);margin-bottom:4px}
+.col h3{font-family:var(--serif);font-weight:700;font-size:var(--i-card-title);line-height:1.2;margin:0 0 8px}
+.col p{margin:0;color:var(--ink-2)}
+.col b{color:var(--ink);font-weight:600}
+.col.wait h3{color:var(--amber)}
+
+/* Дальше: лента шагов, колонки совпадают с колонками выше */
+.next{padding-top:22px}
+.next h2{font-family:var(--serif);font-weight:700;font-size:var(--i-card-title);line-height:1.2;color:var(--indigo);margin:0 0 14px}
+.line{display:grid;grid-template-columns:repeat(var(--n,3),1fr);column-gap:44px;position:relative;margin:0;padding:0;list-style:none}
+.line:before{content:"";position:absolute;left:14px;right:0;top:13px;height:2px;background:var(--indigo)}
+.stop{position:relative}
+.stop i{position:relative;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;
+        background:var(--indigo);color:#fff;font-style:normal;font-size:var(--i-small);font-weight:600}
+.stop.later i{background:#fff;color:var(--indigo);border:2px solid var(--indigo)}
+.stop b{display:block;margin-top:12px;font-weight:600;color:var(--ink)}
+.stop span{display:block;color:var(--ink-2);font-size:calc(var(--i-body) - 1px)}
+</style>
+</head>
+<body>
+<main class="frame" id="frame">
+
+  <div class="meta"><b>{{PROJECT}}</b><span>{{DATE_LABEL}}</span></div>
+
+  <div class="head">
+    <h1>{{MAIN}}</h1>
+    <p class="lede">{{LEDE}}</p>
+  </div>
+
+  <section class="cols" style="--n:{{DONE_COUNT}}" aria-label="Что сделано и что узнали">
+{{DONE_CARDS}}
+  </section>
+
+  <section class="next" aria-label="Что дальше">
+    <h2>Дальше</h2>
+    <ol class="line" style="--n:{{NEXT_COUNT}}">
+{{NEXT_STEPS}}
+    </ol>
+  </section>
+
+</main>
+</body>
+</html>

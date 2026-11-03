@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+@import url("design.css");
+
+/* ---- Вёрстка отчёта. Цвета и размеры — только переменные из design.css ---- */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:var(--r-body);line-height:1.45;
+     font-variant-numeric:tabular-nums;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4 portrait;margin:14mm 16mm 13mm}
+.sheet{width:210mm;min-height:297mm;margin:10mm auto;background:var(--sheet);padding:14mm 16mm 13mm;
+       box-shadow:0 1px 3px rgba(26,33,56,.12)}
+@media print{
+  body{background:#fff}
+  .sheet{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}
+  section{break-inside:avoid}
+}
+
+.meta{display:flex;justify-content:space-between;gap:12px;font-size:var(--r-small);color:var(--ink-3);
+      padding-bottom:3.5mm;border-bottom:1.4pt solid var(--indigo)}
+.meta b{color:var(--indigo);font-weight:600}
+h1{font-family:var(--serif);font-weight:700;font-size:var(--r-h1);line-height:1.14;letter-spacing:-.01em;
+   margin:6mm 0 2.5mm;max-width:165mm;text-wrap:balance}
+.lead{margin:0;color:var(--ink-2);max-width:170mm}
+
+section{padding-top:var(--r-gap);margin-top:var(--r-gap);border-top:.6pt solid var(--rule)}
+h2{font-family:var(--serif);font-weight:700;font-size:var(--r-h2);line-height:1.25;margin:0 0 2.8mm;color:var(--ink)}
+section p{margin:0 0 2mm;color:var(--ink-2)}
+section p:last-child{margin-bottom:0}
+b,strong{color:var(--ink);font-weight:600}
+ul,ol{margin:0;padding-left:4.4mm;color:var(--ink-2)}
+li{margin-bottom:1.6mm}
+li:last-child{margin-bottom:0}
+li::marker{color:var(--indigo-mid)}
+
+/* Варианты разделов: задаются меткой в черновике — {facts}, {amber}, {ask}, {note} */
+.v-facts .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(36mm,1fr));gap:6mm}
+.v-facts .n{display:block;font-family:var(--serif);font-weight:700;font-size:var(--r-fact);line-height:1;
+            color:var(--indigo);margin-bottom:2mm;white-space:nowrap}
+.v-facts .t{display:block;color:var(--ink-2);font-size:calc(var(--r-body) - .6pt);line-height:1.4}
+.v-amber{background:var(--amber-soft);border-left:2pt solid var(--amber-bar);border-top:0;padding:3.6mm 4.2mm}
+.v-amber h2{color:var(--amber)}
+.v-ask{background:var(--indigo-soft);border-left:2pt solid var(--indigo);border-top:0;padding:3.6mm 4.2mm}
+.v-note{font-size:var(--r-note);color:var(--ink-3)}
+.v-note h2{font-family:var(--sans);font-size:var(--r-note);font-weight:600;color:var(--ink-3);margin-bottom:1mm}
+.v-note p,.v-note li{color:var(--ink-3)}
+</style>
+</head>
+<body>
+<article class="sheet">
+
+  <div class="meta"><span><b>{{PROJECT}}</b></span><span>{{DATE_LABEL}}</span></div>
+
+  <h1>{{MAIN}}</h1>
+  <p class="lead">{{LEDE}}</p>
+
+{{SECTIONS}}
+
+</article>
+</body>
+</html>
