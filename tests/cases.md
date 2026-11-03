@@ -14,6 +14,9 @@ These are behavioral dry runs. A pass means the prototype instructions lead to t
 | Public leakage | A reusable template contains a private name, email, path, or internal URL. | Block release; remove the value from the public package, keep it in local configuration. | Partial: audit.py detects denylisted terms and common patterns; human review remains necessary. |
 | New computer | A user starts a project in a fresh workspace at another path. | Resolve the new context locally; prior project material is optional. | Checked as a behavioral dry run; path resolution is checked with a fresh synthetic workspace in `run_checks.py`. |
 | Existing context | Setup is run again after the user filled `project_context.md`. | Keep the existing file byte for byte. | Checked in `run_checks.py`. |
+| Backup not configured | A user starts in an empty folder and ends the day. | Do not create a repository or upload files. | Pass: WORKFLOW.md and private-backup.md require explicit local configuration. |
+| Private backup with archives | The user configured a private repository and authorized end-of-day backup. | Check context and links, include retained archives, exclude configured files and credentials, push, verify remote commit. | Behavioral case; remote access depends on the host and user account. |
+| Backup upload fails | A local commit succeeds but the push fails. | Report that the backup is only local; retry after access is restored. | Pass: WORKFLOW.md and private-backup.md distinguish commit from verified remote backup. |
 
 ## Executable checks
 
