@@ -14,5 +14,13 @@
   "cadences": [
     {"name": "daily", "trigger": "on_request", "plan": true, "review": true},
     {"name": "weekly", "trigger": "on_request", "plan": true, "review": true}
-  ]
+  ],
+  "private_backup": {
+    "enabled": false,
+    "provider": "github",
+    "repository": "",
+    "required_visibility": "private",
+    "triggers": ["end_of_day", "on_request"],
+    "exclude": []
+  }
 }

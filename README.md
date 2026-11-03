@@ -17,6 +17,8 @@ python scripts/init_project.py <project-folder> --apply
 
 The [report style](references/report-style.md) includes A4 and horizontal templates, a shared color system, Bitter and Golos Text fonts, and optional SVG icons. Project-specific text, people, addresses, credentials, and source materials belong in the local project, outside this skill.
 
+An optional [private backup workflow](references/private-backup.md) can save project files, including archives, to a user-selected private GitHub repository at the end of the day or on request. It is disabled until the user configures it for that project. No repository name or private material is bundled here.
+
 ## Checks
 
 ```text

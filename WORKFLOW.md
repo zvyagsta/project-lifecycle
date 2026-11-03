@@ -22,6 +22,12 @@ This file is the portable method. It works in a clean, empty project folder as w
 - Keep a period plan short: objective, priority outcomes, dependencies, decisions needed. A review separates completed work, work in progress, decisions, unknowns, delivery, and next steps.
 - Close a workstream when acceptance evidence and remaining handoff are recorded. Close the whole project only after project-level acceptance, open obligations, ownership, and archive locations are resolved.
 
+## Optional private backup
+
+- A GitHub repository is an optional project-specific store, not a prerequisite for this workflow. Configure its owner, repository, visibility, exclusions, and backup triggers only on the user's request. Keep these values in the local project, not in this public skill.
+- When the user has authorized a continuing backup cadence, run it at the configured end-of-day checkpoint or on a direct backup request. This is a workflow trigger, not a background schedule. Update the context and check links first; then review changed files, exclude credentials and user-excluded material, commit, push, and verify that the remote received the commit. Preserve project archives unless the user excludes them.
+- If the remote is not private, access is unclear, a sensitive file is staged, or the push fails, stop the upload and report the exact state. Never describe a local commit as a completed backup. Follow [private-backup.md](references/private-backup.md) for the detailed sequence.
+
 ## Communication and authorization
 
 Write briefly: one conclusion, then up to three steps when useful. Use plain language. Create or edit files, settings, automations, and external destinations only on the user's direct request; perform the requested scope. Propose additional changes in words first. Do not send or publish without separate authorization.
