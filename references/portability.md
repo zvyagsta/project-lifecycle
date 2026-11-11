@@ -8,4 +8,6 @@ The optional `scripts/init_project.py` previews or creates starter files without
 
 If the user wants a local configuration, create `.project-lifecycle/config.json` from the example asset with paths relative to the new project root. Run `python scripts/audit.py project <project-dir>` after creating the entrypoints. The check cannot establish that external services work or that the context is complete.
 
+To keep the skill current on every device, install it as described in [updates.md](updates.md). A project may also keep a pinned copy as a git submodule; on a new device clone with `--recurse-submodules` or run `git submodule update --init --recursive`, then follow [resume-project](../tasks/resume-project.md).
+
 The reusable report design is optional and can be copied into the new project's report tooling. Keep project-specific text and participant details in the local project, outside the public skill. Publication or synchronization is a separate user-authorized action.

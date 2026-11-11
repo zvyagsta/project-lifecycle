@@ -17,6 +17,14 @@ These are behavioral dry runs. A pass means the prototype instructions lead to t
 | Backup not configured | A user starts in an empty folder and ends the day. | Do not create a repository or upload files. | Pass: WORKFLOW.md and private-backup.md require explicit local configuration. |
 | Private backup with archives | The user configured a private repository and authorized end-of-day backup. | Check context and links, include retained archives, exclude configured files and credentials, push, verify remote commit. | Behavioral case; remote access depends on the host and user account. |
 | Backup upload fails | A local commit succeeds but the push fails. | Report that the backup is only local; retry after access is restored. | Pass: WORKFLOW.md and private-backup.md distinguish commit from verified remote backup. |
+| Named task | The user asks «план на сегодня». | Follow `tasks/plan-period.md`: Markdown first, plan page built and checked, path given, the page not opened without consent, the plan's tasks not started. | Checked in `run_checks.py`: every task is listed in SKILL.md and has the common parts; behavior is a dry run. |
+| Plan page offline | A plan page is opened on a device without internet access. | Fonts and styles are embedded; the page renders the same. | Checked in `run_checks.py`: the build inlines styles and fonts. |
+| Update available | The installed copy is behind the repository. | `update_skill.py check` reports both versions and the changelog; mode `notify` applies only on consent. | Checked in `run_checks.py` with a synthetic repository. |
+| Update with local edits | The managed copy was edited locally. | Refuse the update and keep the installed version. | Checked in `run_checks.py`. |
+| Major update | A new MAJOR version is published. | Wait for the user's consent (`--allow-major`). | Checked in `run_checks.py`. |
+| Broken update | The new version fails the skill's tests. | Return to the previous commit and report. | Checked in `run_checks.py`. |
+| Pinned project copy | A project keeps the skill as a submodule; the user installed a newer version. | Work by the installed version, report the difference, update the project copy only on request. | Behavioral case: WORKFLOW.md, updates.md and update-skill.md specify this. |
+| Project name in the public skill | A private project name appears in a skill file. | `audit.py public --denylist <private file>` fails; the term is removed before publishing; the denylist stays in the private project. | Checked in `run_checks.py` with a synthetic term. |
 
 ## Executable checks
 

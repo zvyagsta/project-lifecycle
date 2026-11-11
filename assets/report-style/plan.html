@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{TITLE}}</title>
+<style>
+@import url("design.css");
+@import url("plan.css");
+</style>
+</head>
+<body>
+<!--
+  Шаблон страницы плана. Используется задачей plan-period (tasks/plan-period.md).
+  1. Скопировать в архив периода как <имя>.draft.html и заменить все {{...}} текстом из Markdown плана.
+     Лишние блоки удалить, повторяющиеся размножить. Текст HTML = текст Markdown.
+  2. Собрать один файл: python scripts/build_page.py <черновик> <итог.html> --md <план.md> --layout <папка снимков>
+  Роли берутся из .project-lifecycle/config.json (roles), а не из этого шаблона.
+-->
+<main class="sheet">
+
+<!-- ШАПКА: служебная строка, заголовок, главное в 2–4 предложениях, янтарная плашка — что сначала -->
+<header>
+  <div class="eyebrow">{{PROJECT}} · внутренний план · версия {{VERSION}} · {{TIMEZONE}}</div>
+  <h1>{{TITLE}}</h1>
+  <p class="lead">{{MAIN}}</p>
+  <div class="callout"><p><strong>{{FIRST}}</strong> {{FIRST_NOTE}}</p></div>
+</header>
+
+<!-- ПОЯСНЕНИЕ С ПРИМЕРОМ: например, как сопоставить две системы номеров. Удалить, если не нужно -->
+<section aria-labelledby="h-explain">
+  <h2 id="h-explain">{{EXPLAIN_TITLE}}</h2>
+  <div class="explain">
+    <div><p>{{EXPLAIN_TEXT}}</p></div>
+    <div class="example"><span>{{EXAMPLE_FROM}}</span><i>→</i><span>{{EXAMPLE_TO}}</span></div>
+  </div>
+</section>
+
+<!-- ЧТО ЕСТЬ: слева готово (индиго, со ссылками), справа не сделано (янтарь) -->
+<section aria-labelledby="h-start">
+  <h2 id="h-start">Что уже есть</h2>
+  <div class="status">
+    <div class="col"><h3>Готово</h3><ul>{{DONE_ITEMS}}</ul></div>
+    <div class="col todo"><h3>Ещё не сделано</h3><p>{{NOT_DONE}}</p></div>
+  </div>
+</section>
+
+<!-- ШАГИ: номера — потому что это порядок работ. Главный шаг — class="step key".
+     Метки: chip wait dot — ждёт решения или материалов; chip main — главный результат; chip after — после другого шага -->
+<section aria-labelledby="h-steps">
+  <h2 id="h-steps">Что сделать</h2>
+  <div class="steps">
+    <article class="step">
+      <div class="num">1</div>
+      <div class="step-body">
+        <div class="step-head"><h3>{{STEP}}</h3><span class="chip wait dot">{{STATE}}</span></div>
+        <p>{{STEP_TEXT}}</p>
+      </div>
+    </article>
+    <article class="step key">
+      <div class="num">2</div>
+      <div class="step-body">
+        <div class="step-head"><h3>{{KEY_STEP}}</h3><span class="chip main">главный результат</span></div>
+        <p>{{KEY_STEP_TEXT}}</p>
+        <!-- КАРТОЧКИ РЕШЕНИЙ: метки (id — основной номер, id w — второй номер, отдел, срок), маршрут, «Решить:», совет исполнителя -->
+        <div class="decisions">
+          <div class="decision">
+            <h4>{{QUESTION}}</h4>
+            <div class="ids"><span class="id">{{ID}}</span><span class="id w">{{ID_DETAILS}}</span></div>
+            <p>{{KNOWN}}</p>
+            <div class="route"><span>{{FROM}}</span><em>→</em><span>{{TO}}</span></div>
+            <p class="decide"><b>Решить:</b> {{DECIDE}}</p>
+            <p class="reco">{{ADVICE}}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+    <article class="step">
+      <div class="num">3</div>
+      <div class="step-body">
+        <div class="step-head"><h3>{{STEP}}</h3><span class="chip after">после {{AFTER}}</span></div>
+        <p>{{STEP_TEXT}}</p>
+        <p class="timing"><strong>{{CONDITION}}</strong> {{CONDITION_NOTE}}</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ЦЕПОЧКА: link — исполнитель или результат, link owner — действие владельца проекта -->
+<section aria-labelledby="h-dep">
+  <h2 id="h-dep">Что от чего зависит</h2>
+  <div class="chain">
+    <div class="link owner"><small>{{OWNER}}</small><b>{{OWNER_ACTION}}</b></div><span class="arrow" aria-hidden="true">→</span>
+    <div class="link"><small>{{CONTRIBUTOR}}</small><b>{{RESULT}}</b></div>
+  </div>
+  <ul>{{DEPENDENCIES}}</ul>
+</section>
+
+<!-- КТО ЧТО РЕШАЕТ: две колонки, под ролью — когда -->
+<section aria-labelledby="h-who">
+  <h2 id="h-who">Кто что решает</h2>
+  <div class="who">
+    <div class="col"><h3>{{OWNER}}<small>{{WHEN}}</small></h3><ul>{{OWNER_DECISIONS}}</ul></div>
+    <div class="col"><h3>{{APPROVER}}<small>{{WHEN}}</small></h3><ul>{{APPROVER_DECISIONS}}</ul></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-next">
+  <h2 id="h-next">Что остаётся на {{NEXT_PERIOD}}</h2>
+  <ul>{{NEXT_ITEMS}}</ul>
+</section>
+
+<!-- НИЖНИЕ БЛОКИ: время (без замера — «не измерено»), как подвести итог, чего исполнитель не делает -->
+<div class="tail">
+  <section aria-labelledby="h-time"><h2 id="h-time">Время</h2><p>{{TIME}}</p></section>
+  <section aria-labelledby="h-sum"><h2 id="h-sum">Как подвести итог</h2><ul>{{REVIEW_ITEMS}}</ul></section>
+  <section aria-labelledby="h-no"><h2 id="h-no">Чего исполнитель не делает</h2><ul>{{LIMITS}}</ul></section>
+</div>
+
+<p class="note">Рабочий источник текста — <a href="{{SOURCE_MD}}">Markdown</a>.</p>
+</main>
+</body>
+</html>

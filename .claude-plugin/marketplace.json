@@ -1,0 +1,18 @@
+{
+  "name": "project-lifecycle",
+  "description": "Project lifecycle skill: context, decisions, plans, reviews, reports and closure.",
+  "owner": {
+    "name": "zvyagsta",
+    "url": "https://github.com/zvyagsta/project-lifecycle"
+  },
+  "plugins": [
+    {
+      "name": "project-lifecycle",
+      "source": "./",
+      "displayName": "Project lifecycle",
+      "description": "Named repeatable project tasks with plan and report pages.",
+      "category": "productivity",
+      "tags": ["project-management", "planning", "reports"]
+    }
+  ]
+}
