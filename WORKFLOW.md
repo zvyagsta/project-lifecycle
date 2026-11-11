@@ -7,6 +7,8 @@ This file is the portable method. It works in a clean, empty project folder as w
 1. If the folder is empty and no `project_context.md` exists, treat this as a new project. Ask only for missing essentials: purpose, desired result, immediate work, and any review rhythm the user wants. If the user already gave them, proceed. Create the initial structure and context only when asked to start or set up the project. Record unknowns instead of inventing history.
 2. If `project_context.md` exists, read it and the local rules. Identify the purpose, active stage, latest confirmed result, open questions, and next step. Name the files used. If the folder contains other project files but no context, inspect what is available and ask where the current facts are; do not assume the project is new.
 3. Follow the user's current request. A question, doubt, or correction first needs an answer and reasons; it is not automatically an instruction to edit files.
+4. Match the request to a named task in `tasks/` (listed in `SKILL.md`) and follow its steps. If no task fits, use the rules below.
+5. If local settings enable skill update checks (`skill_updates`), check once per configured interval at the start of work and report the result in one line; apply an update only as the configured mode allows. A project copy of the skill stays pinned until the user asks to update it.
 
 ## Work with materials and results
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project lifecycle"
+  short_description: "Ведёт проект: контекст, решения, планы, итоги"
+  default_prompt: "Use $project-lifecycle to run the matching project task, for example plan-period for today's plan."

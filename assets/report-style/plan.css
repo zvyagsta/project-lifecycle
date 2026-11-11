@@ -1,0 +1,116 @@
+/* =========================================================================
+   Страница плана: раскладка и компоненты.
+   Цвета и шрифты — только переменные из design.css (подключается первым).
+   Индиго — сделано, факт, порядок. Янтарь — ждёт решения, действие владельца.
+   Образец разметки — plan.html. Сборка в один файл — scripts/build_page.py.
+   ========================================================================= */
+/* Макет: белый лист на сером столе; шапка → пояснение → что есть → шаги периода → зависимости → кто решает → остаток → нижние блоки. */
+:root{
+  --gap:clamp(28px,4vw,44px); /* отступ между разделами страницы плана */
+  color-scheme:light;         /* дизайн-система — один светлый лист, как у отчёта */
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink-2);font:16.5px/1.6 var(--sans);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px}
+.sheet{max-width:1000px;margin:0 auto;background:var(--sheet);padding-block:clamp(26px,4vw,48px);
+  padding-inline:clamp(18px,5vw,56px);display:flex;flex-direction:column;gap:var(--gap)}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,42px);font-weight:700;line-height:1.12}
+h2{font-size:clamp(21px,2.6vw,25px);font-weight:700;line-height:1.25}
+h3{font-size:18.5px;font-weight:600;line-height:1.3}
+p{margin:0;max-width:68ch}
+a{color:var(--indigo);text-decoration-color:var(--indigo-mid);text-underline-offset:3px;overflow-wrap:anywhere}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--indigo);outline-offset:2px;border-radius:2px}
+strong{color:var(--ink);font-weight:600}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+li::marker{color:var(--indigo-mid)}
+section{display:flex;flex-direction:column;gap:16px;min-width:0}
+.eyebrow{font-size:14px;color:var(--ink-3);letter-spacing:.02em}
+
+/* Шапка */
+header{display:flex;flex-direction:column;gap:14px;padding-bottom:22px;border-bottom:3px solid var(--indigo)}
+.lead{font-size:18.5px;line-height:1.55;color:var(--ink)}
+.callout{display:flex;gap:12px;align-items:flex-start;background:var(--amber-soft);border-left:4px solid var(--amber-bar);padding:12px 16px}
+.callout p{color:var(--ink)}
+
+/* Чипы */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;line-height:1.3;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.chip.wait{background:var(--amber-soft);color:var(--amber)}
+.chip.main{background:var(--indigo);color:var(--sheet)}
+.chip.after{background:var(--indigo-soft);color:var(--indigo)}
+.chip.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+
+/* Пояснение с примером */
+.explain{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;background:var(--indigo-soft);padding:18px 20px}
+.example{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;color:var(--indigo);font-variant-numeric:tabular-nums}
+.example span{background:var(--sheet);padding:6px 12px;font-size:17px;white-space:nowrap}
+.example i{font-style:normal;color:var(--ink-3);font-family:var(--sans)}
+.explain ul{gap:4px}
+
+/* Что есть: готово / не сделано */
+.status{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px}
+.col{display:flex;flex-direction:column;gap:12px;padding:18px 20px;border-top:3px solid var(--indigo);background:var(--sheet);outline:1px solid var(--rule);outline-offset:-1px;min-width:0}
+.col.todo{border-top-color:var(--amber-bar);background:var(--amber-soft);outline:none}
+.col h3{font-size:16.5px}
+
+/* Шаги периода */
+.steps{display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding-block:22px;border-top:1px solid var(--rule)}
+.step:first-child{border-top:none;padding-top:4px}
+.num{font-family:var(--serif);font-weight:700;font-size:34px;line-height:1;color:var(--indigo);font-variant-numeric:tabular-nums}
+.step.key .num{color:var(--sheet);background:var(--indigo);width:46px;height:46px;display:grid;place-items:center;font-size:26px}
+.step-body{display:flex;flex-direction:column;gap:12px;min-width:0}
+.step-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+
+/* Карточки решений */
+.decisions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:4px}
+.decision{display:flex;flex-direction:column;gap:10px;padding:16px 18px;outline:1px solid var(--rule);outline-offset:-1px;min-width:0}
+.decision h4{margin:0;font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink)}
+.ids{display:flex;flex-wrap:wrap;gap:6px}
+.id{font-size:13px;line-height:1.3;padding:3px 8px;background:var(--indigo-soft);color:var(--indigo);font-variant-numeric:tabular-nums;white-space:nowrap}
+.id.w{background:transparent;outline:1px solid var(--rule);outline-offset:-1px;color:var(--ink-2)}
+.decision p{font-size:15.5px}
+.decide{font-size:15.5px;color:var(--ink);border-top:1px dashed var(--amber-bar);padding-top:9px}
+.decide b{color:var(--amber);font-weight:600}
+.reco{font-size:15.5px;background:var(--indigo-soft);padding:9px 12px;color:var(--ink)}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:14.5px;color:var(--ink)}
+.route span{padding:2px 8px;background:var(--sheet);outline:1px solid var(--rule);outline-offset:-1px}
+.route em{font-style:normal;color:var(--indigo-mid)}
+.timing{background:var(--amber-soft);padding:12px 16px;color:var(--ink)}
+
+/* Цепочка зависимостей */
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
+.link{flex:1 1 150px;display:flex;flex-direction:column;gap:4px;padding:12px 14px;background:var(--indigo-soft);min-width:0}
+.link small{font-size:13px;color:var(--ink-3)}
+.link b{font-family:var(--serif);font-weight:600;color:var(--indigo);font-size:16px;line-height:1.3}
+.link.owner{background:var(--amber-soft)}
+.link.owner b{color:var(--amber)}
+.arrow{align-self:center;color:var(--indigo-mid);font-size:20px}
+
+/* Кто решает */
+.who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.who .col h3{display:flex;flex-direction:column;gap:2px}
+.who .col h3 small{font-family:var(--sans);font-weight:400;font-size:14px;color:var(--ink-3)}
+
+/* Нижние блоки */
+.tail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tail section{gap:10px}
+.tail h2{font-size:19px}
+.tail p,.tail li{font-size:15.5px}
+.note{font-size:15px;color:var(--ink-3)}
+
+@media (max-width:760px){
+  .status,.who,.decisions,.tail{grid-template-columns:minmax(0,1fr)}
+  .explain{grid-template-columns:minmax(0,1fr)}
+  .step{grid-template-columns:minmax(0,1fr);gap:10px}
+  .arrow{transform:rotate(90deg)}
+  .chain{flex-direction:column}
+  .link{flex:none}
+}
+@media print{
+  body{background:var(--sheet);padding:0}
+  .sheet{padding:0;max-width:none}
+  .step,.decision,.col{break-inside:avoid}
+  h2,h3{break-after:avoid}
+}

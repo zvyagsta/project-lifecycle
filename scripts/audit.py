@@ -18,6 +18,15 @@ PRIVATE_PATTERNS = {
     "non-public URL": re.compile(r"https?://[^\s)\]<>\"']+", re.I),
 }
 LINK = re.compile(r"(?<!!)\[[^\]]+\]\((<[^>]+>|[^)]+)\)")
+SCHEME = re.compile(r"^[a-z][a-z0-9+.-]*:", re.I)
+
+
+def missing_target(base: Path, target: str) -> bool:
+    """True when a local link target (Markdown or HTML) does not exist relative to base."""
+    target = unquote(target.strip("<>").split("#", 1)[0])
+    if not target or SCHEME.match(target):
+        return False
+    return not (base / target).exists()
 
 
 def public_findings(root: Path, denylist: list[str]) -> list[str]:
@@ -54,11 +63,9 @@ def link_findings(project: Path, contexts: list[Path]) -> list[str]:
             continue
         content = path.read_text(encoding="utf-8", errors="replace")
         for match in LINK.finditer(content):
-            target = unquote(match.group(1).strip("<>").split("#", 1)[0])
-            if not target or re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):
-                continue
-            if not (path.parent / target).exists():
+            if missing_target(path.parent, match.group(1)):
                 line = content.count("\n", 0, match.start()) + 1
+                target = unquote(match.group(1).strip("<>").split("#", 1)[0])
                 findings.append(f"{path}:{line}: missing link target {target}")
     return findings
 

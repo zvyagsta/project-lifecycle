@@ -15,6 +15,11 @@
     {"name": "daily", "trigger": "on_request", "plan": true, "review": true},
     {"name": "weekly", "trigger": "on_request", "plan": true, "review": true}
   ],
+  "skill_updates": {
+    "mode": "notify",
+    "interval": "monthly",
+    "project_copy": ""
+  },
   "private_backup": {
     "enabled": false,
     "provider": "github",
