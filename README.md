@@ -41,7 +41,7 @@ Repeatable work is split into 13 named tasks. You ask in your own words, and the
 |---|---|---|
 | [plan-period](tasks/plan-period.md) | Writes a plan for a day, a week or another period in Markdown, then builds it into an HTML page. | «план на сегодня» — plan for today |
 | [review-period](tasks/review-period.md) | Writes an internal review of the period with a link to evidence for each completed item. | «итоги дня» — results of the day |
-| [report-period](tasks/report-period.md) | Prepares a report and an infographic for a manager or a team. Builds the files after you approve the text; sending them is a separate step. | «отчёт за день» — daily report |
+| [report-period](tasks/report-period.md) | Prepares a report and an infographic for a manager or a team. Shows designed HTML previews first, then exports the approved version; sending them is a separate step. | «отчёт за день» — daily report |
 | [build-page](tasks/build-page.md) | Turns a draft into one HTML file that opens offline, with fonts and styles inside, and checks links, text and layout at desktop and phone width. | used by plans and reviews |
 
 **Closing**
@@ -52,6 +52,16 @@ Repeatable work is split into 13 named tasks. You ask in your own words, and the
 | [close-project](tasks/close-project.md) | Closes the project: final results, handover, open obligations, who supports what. | «закрываем проект» — close the project |
 
 The full method behind the tasks is in [WORKFLOW.md](WORKFLOW.md). An agent that does not load skills automatically can read it directly.
+
+## Reports: review the designed result
+
+The report explains progress against the current plan: why significant work was needed, what it produced and what follows. It includes enough context to stand on its own and uses figures only when they clarify the result. Delays and unresolved decisions stay visible.
+
+Review the report and infographic as HTML previews together. A separate text-draft approval is not required. After approval, the agent exports that version to the project's accepted formats and checks the result. Small requested corrections preserve the rest of the accepted text.
+
+After release, the period folder holds the approved final documents, the latest approved plan and the active period prompt. Working materials and previous versions are archived without deletion, and links are updated. An active plan awaiting approval keeps its true status. User-facing file links show the full clickable path. Details: [report rules](references/reports.md).
+
+Version 1.0.0 changes the approval order from text-first to HTML-first. The update requires consent through the existing major-version gate; see [CHANGELOG.md](CHANGELOG.md).
 
 ## Install
 
@@ -114,7 +124,7 @@ python tests/check_style.py
 python scripts/audit.py public . --denylist <file with your private terms>
 ```
 
-The last command searches the skill for private data before you publish a fork or a change. It finds e-mail addresses, Windows paths, private network addresses and links to non-public sites, plus the terms from your denylist. Keep the denylist in your private project, never in this repository, and look through the files yourself before publishing.
+The last command searches the skill for private data before you publish a fork or a change. It finds e-mail addresses, Windows paths, private network addresses and links to non-public sites, plus the terms from your denylist. Keep the denylist in your private project, never in this repository, and look through the files yourself before publishing. When changing the skill, follow [the publication procedure](references/publishing.md): validate locally, review the exact staged diff for private data, then push only with authorization and verify the remote result.
 
 The scripts need Python 3.11 or newer. The method and the templates work without Python.
 

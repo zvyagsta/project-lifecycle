@@ -10,7 +10,7 @@ Write the plan in Markdown first; it stays the working source. When the plan is 
 
 ## Review
 
-State the period and evidence cutoff. Separate completed outcomes, work still in progress, decisions, unresolved questions, external deliveries, and next period's priorities. Link internal evidence. Use the project's approved external format when making a version for others. Do not infer completion from an earlier plan or delivery from an output file.
+State the period and evidence cutoff. Separate completed outcomes, work still in progress, decisions, unresolved questions, external deliveries, and next period's priorities. Link internal evidence. For an external version, follow [reports.md](reports.md): explain progress and the value of the work, show designed HTML for approval, then export to the project's accepted formats. Do not infer completion from an earlier plan or delivery from an output file.
 
 ## Period boundaries
 

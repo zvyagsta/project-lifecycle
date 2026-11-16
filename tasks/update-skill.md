@@ -1,5 +1,7 @@
 # update-skill — check and apply a new version of this skill
 
+For a request to edit and publish the method itself, follow [publishing.md](../references/publishing.md). The steps below install an existing release.
+
 **When:** the monthly check, the user asks «обнови скилл», or [resume-project](resume-project.md) finds two different versions.
 
 **Input:** the skill copy to update — a git clone installed for the user, or the project copy (git submodule); the mode from `skill_updates` in local settings: `notify`, `auto-minor` or `pinned`.

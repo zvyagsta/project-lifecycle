@@ -2,6 +2,16 @@
 
 Versions follow `MAJOR.MINOR.PATCH`. A new MAJOR version may change how work is done and is applied only with the user's consent. MINOR adds tasks, templates, or checks without changing existing behavior. PATCH fixes text and bugs. The version is the same in `SKILL.md` and `.claude-plugin/plugin.json`; `tests/run_checks.py` checks this.
 
+## 1.0.0
+
+- **Changed approval workflow:** present a designed HTML report and infographic before requesting approval. Keep the text draft internal; export only the approved HTML version to the project's accepted formats. This replaces text-draft approval before layout, so installation requires consent for a major version.
+- Added reusable report-content rules: progress against the plan, a self-contained explanation of purpose and value for any kind of work, useful measures only, and brief next steps from the current plan. Preserve uncertainty and distinguish planned targets from completed results.
+- Preserve accepted content during narrow corrections; retain prior versions and check exported text and layout.
+- Show full clickable local paths in user-facing file links. Keep real project paths out of public skill files.
+- Keep approved final documents, the current period plan and active prompt visible after release; archive working materials and older versions without deletion, update links and verify retained files.
+- Added a publication procedure with local validation, private-data review before staging and again on the exact staged diff, author/committer/tagger metadata review before push, version consistency and remote verification. Project data and private denylists remain outside the public package.
+- Updated README, task instructions, shared workflow, design references and synthetic review cases to the same approval and archive rules. Existing export formats and design assets are unchanged.
+
 ## 0.2.0
 
 - Named repeatable tasks in `tasks/`: `start-project`, `resume-project`, `update-skill`, `plan-period`, `review-period`, `report-period`, `update-context`, `intake-material`, `record-decision`, `build-page`, `backup-project`, `close-workstream`, `close-project`.

@@ -22,6 +22,9 @@ This file is the portable method. It works in a clean, empty project folder as w
 
 - Use the user's chosen cadence, time zone, and period boundaries. A schedule preference does not create an automation. Count completed work from evidence, not from plans.
 - Keep a period plan short: objective, priority outcomes, dependencies, decisions needed. A review separates completed work, work in progress, decisions, unknowns, delivery, and next steps.
+- A report explains progress against the plan and connects significant work to its purpose, result and consequence. Give enough context to understand it without a chat or background files; use figures only when they help. Keep delays and unresolved decisions visible, and never invent effort or completion. Take brief next steps from the current plan and label their period.
+- Present the report and visual companion as designed HTML previews, without requiring separate text-draft approval. Export only the approved version to the project's accepted formats. Preserve accepted content during narrow corrections and check both layout and full-text fidelity. The user's explicit workflow takes precedence.
+- After release, retain approved final documents, the latest approved plan (source and reading version where used) and the active period prompt in the main period folder. If a plan is still unapproved, retain the active version with its true status. Archive other report materials without deletion or overwriting earlier archives; check move paths, update live links and preserve historical snapshots.
 - Close a workstream when acceptance evidence and remaining handoff are recorded. Close the whole project only after project-level acceptance, open obligations, ownership, and archive locations are resolved.
 
 ## Optional private backup
@@ -31,6 +34,8 @@ This file is the portable method. It works in a clean, empty project folder as w
 - If the remote is not private, access is unclear, a sensitive file is staged, or the push fails, stop the upload and report the exact state. Never describe a local commit as a completed backup. Follow [private-backup.md](references/private-backup.md) for the detailed sequence.
 
 ## Communication and authorization
+
+In user-facing links to local files, show the full resolved absolute path as clickable text. Keep real machine paths out of the public skill and its templates.
 
 Write briefly: one conclusion, then up to three steps when useful. Use plain language. Create or edit files, settings, automations, and external destinations only on the user's direct request; perform the requested scope. Propose additional changes in words first. Do not send or publish without separate authorization.
 
