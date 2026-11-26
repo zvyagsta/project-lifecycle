@@ -2,6 +2,11 @@
 
 Versions follow `MAJOR.MINOR.PATCH`. A new MAJOR version may change how work is done and is applied only with the user's consent. MINOR adds tasks, templates, or checks without changing existing behavior. PATCH fixes text and bugs. The version is the same in `SKILL.md` and `.claude-plugin/plugin.json`; `tests/run_checks.py` checks this.
 
+## 1.1.1
+
+- Clarified the existing `analytical-note` completion gate: research each material part of the question and verify decisive claims before calling the note ready. Keep unresolved decisive questions visible as draft work.
+- For HTML notes, require a designed offline reading page and visual review of the final revision at wide and narrow widths. Check tables, long paths, navigation and page overflow; link checks alone do not establish layout quality.
+
 ## 1.1.0
 
 - Added the `analytical-note` task for a source-backed answer to a project question. It uses the Minto pyramid by default, separates published behavior, local observations, inferences and unknowns, and checks the requested reading format.

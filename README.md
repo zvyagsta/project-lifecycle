@@ -42,7 +42,7 @@ Repeatable work is split into 14 named tasks. You ask in your own words, and the
 | [plan-period](tasks/plan-period.md) | Writes a plan for a day, a week or another period in Markdown, then builds it into an HTML page. | «план на сегодня» — plan for today |
 | [review-period](tasks/review-period.md) | Writes an internal review of the period with a link to evidence for each completed item. | «итоги дня» — results of the day |
 | [report-period](tasks/report-period.md) | Prepares a report and an infographic for a manager or a team. Shows designed HTML previews first, then exports the approved version; sending them is a separate step. | «отчёт за день» — daily report |
-| [analytical-note](tasks/analytical-note.md) | Researches a project question using the Minto pyramid by default: conclusion, grouped reasons, then evidence. | «аналитическая записка» — analytical note |
+| [analytical-note](tasks/analytical-note.md) | Covers the full project question using the Minto pyramid by default; visually checks every final HTML note. | «аналитическая записка» — analytical note |
 | [build-page](tasks/build-page.md) | Turns a draft into one HTML file that opens offline, with fonts and styles inside, and checks links, text and layout at desktop and phone width. | used by plans and reviews |
 
 **Closing**
@@ -56,7 +56,7 @@ The full method is in [WORKFLOW.md](WORKFLOW.md). An agent that does not load sk
 
 ## Analytical notes start with an answer
 
-The agent uses the Minto pyramid by default: it answers the project question first, groups the reasons, then places evidence under each reason. It distinguishes published product behavior, observations in your environment, inferences and open questions. Personal data stay out of external search queries and services. See [analytical-note](tasks/analytical-note.md).
+The agent uses the Minto pyramid by default: it answers the full project question first, groups the reasons, then places evidence under each reason. It distinguishes published product behavior, observations in your environment, inferences and open questions. For an HTML note, it delivers a designed offline page only after visually checking the final version at wide and narrow widths, including tables, long paths and navigation. Personal data stay out of external search queries and services. See [analytical-note](tasks/analytical-note.md).
 
 ## Reports: review the designed result
 
