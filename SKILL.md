@@ -1,8 +1,8 @@
 ---
 name: project-lifecycle
-description: "Start or maintain a project workspace through named repeatable tasks: context, incoming materials, decisions, period plans and reviews with designed plan and report pages, private backups, skill updates, and closure. Use for a new workspace or an ongoing project; do not infer authorization to publish or send files. Триггеры: «начни проект», «продолжаю с другого устройства», «план на сегодня», «план недели», «итоги дня», «итоги недели», «отчёт за день», «инфографика», «запиши решение», «прислали материал», «обнови контекст», «сохрани копию», «обнови скилл», «закрываем направление»."
+description: "Start or maintain a project workspace through named repeatable tasks: context, incoming materials, decisions, analytical notes, period plans and reviews with designed plan and report pages, private backups, skill updates, and closure. Use for a new workspace or an ongoing project; do not infer authorization to publish or send files. Триггеры: «начни проект», «продолжаю с другого устройства», «аналитическая записка», «ресерч для проекта», «план на сегодня», «план недели», «итоги дня», «итоги недели», «отчёт за день», «инфографика», «запиши решение», «прислали материал», «обнови контекст», «сохрани копию», «обнови скилл», «закрываем направление»."
 metadata:
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # Project lifecycle
@@ -21,6 +21,7 @@ Pick the task that matches the request and follow its file. Each task file has t
 | [plan-period](tasks/plan-period.md) | Plan for a day, week or period: Markdown and a plan page | «план на сегодня» |
 | [review-period](tasks/review-period.md) | Internal review of a period with evidence | «итоги дня» |
 | [report-period](tasks/report-period.md) | HTML report and infographic for approval, then export | «отчёт за день» |
+| [analytical-note](tasks/analytical-note.md) | Research a question and present a traceable conclusion using the Minto pyramid by default | «аналитическая записка» |
 | [update-context](tasks/update-context.md) | Record a substantive iteration and check links | after any result |
 | [intake-material](tasks/intake-material.md) | Store an incoming original once and record it | «прислали файл» |
 | [record-decision](tasks/record-decision.md) | Record a decision with date, role and basis | «записываем решение» |

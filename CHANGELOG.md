@@ -2,6 +2,12 @@
 
 Versions follow `MAJOR.MINOR.PATCH`. A new MAJOR version may change how work is done and is applied only with the user's consent. MINOR adds tasks, templates, or checks without changing existing behavior. PATCH fixes text and bugs. The version is the same in `SKILL.md` and `.claude-plugin/plugin.json`; `tests/run_checks.py` checks this.
 
+## 1.1.0
+
+- Added the `analytical-note` task for a source-backed answer to a project question. It uses the Minto pyramid by default, separates published behavior, local observations, inferences and unknowns, and checks the requested reading format.
+- Keep personal data local during analytical research. The public package and release metadata may identify only the creator's public GitHub account; local checks and an explicit approval of the reviewed update precede publication.
+- Added Codex alongside Claude and zvyagsta in the README contributors list. Existing plan, review and report behavior is unchanged.
+
 ## 1.0.0
 
 - **Changed approval workflow:** present a designed HTML report and infographic before requesting approval. Keep the text draft internal; export only the approved HTML version to the project's accepted formats. This replaces text-draft approval before layout, so installation requires consent for a major version.

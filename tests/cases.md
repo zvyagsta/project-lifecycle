@@ -41,6 +41,7 @@ These cases use synthetic situations. They are manual instruction walkthroughs, 
 | Unapproved plan | A report is approved, while the active plan is still a proposal. | Keep the active plan with its real status; report approval does not approve the plan. | Pass: reports.md states the exception explicitly. |
 | Full-path link | The user needs to locate a delivered local file. | Show its resolved absolute path as the clickable label; do not copy that path into a public template. | Pass: workflow and reports.md separate local communication from public assets. |
 | Private release note | A reusable change is sound, but its release note contains a real client detail. | Remove the private detail before staging; audit and read the staged diff again before an authorized push. | Pass: publishing.md uses two distinct review points; automated scanning remains incomplete. |
+| Analytical note without a structure request | The user asks for an analytical note and does not mention the Minto pyramid. | Answer the question first, then group reasons and put evidence beneath each; keep personal data out of external queries. | Pass: analytical-note.md makes the Minto hierarchy the default. |
 
 ## Executable checks
 

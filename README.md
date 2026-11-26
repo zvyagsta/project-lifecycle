@@ -1,22 +1,22 @@
 # Project Lifecycle
 
-A skill that helps an AI agent run a project for you. The agent keeps the project's memory in plain files: what the project is for, where it stands, what was decided and why, which materials arrived. It writes plans and reviews, builds readable pages from them and closes the work when it is accepted.
+A skill for starting and maintaining a project with an AI agent. It records the project's purpose, current state, materials, decisions, plans, reviews and accepted results in plain files.
 
-The same files work with Claude Code, Codex and any agent that reads `SKILL.md`. You can switch agents or devices, and the next session picks up from the files rather than from a chat history.
+Claude Code, Codex and other agents that read `SKILL.md` can use the same files. A new session can continue from them, even on another device.
 
-The skill holds no project data. Everything about your project stays in your project folder.
+The public skill package contains no project materials or personal data beyond the creator's public GitHub account.
 
 ## How the agent behaves
 
 - It starts a task only when you ask for it. Finishing one task does not start the next.
-- It does not send, publish or push anything without a separate request.
+- It sends, publishes or pushes files only when you authorize that action.
 - It records a decision only when someone made one. A proposal or a discussion stays a proposal.
 - It counts work as done only when there is evidence: a file, a message, a confirmed result. A plan is not evidence.
 - It keeps earlier versions of results and never overwrites history.
 
 ## Tasks
 
-Repeatable work is split into 13 named tasks. You ask in your own words, and the agent picks the task and follows its file in [tasks/](tasks/). The examples are in Russian, as in the skill's triggers; an agent understands the same request in English.
+Repeatable work is split into 14 named tasks. You ask in your own words, and the agent picks the task and follows its file in [tasks/](tasks/). The examples are in Russian, as in the skill's triggers; an agent understands the same request in English.
 
 **Start and continue**
 
@@ -35,13 +35,14 @@ Repeatable work is split into 13 named tasks. You ask in your own words, and the
 | [record-decision](tasks/record-decision.md) | Records a decision with its date, who made it and on what basis. | «записываем решение» — record the decision |
 | [backup-project](tasks/backup-project.md) | Commits the project to a private repository you set up and checks that GitHub received the commit. Off until you configure it. | «сохрани копию» — save a copy |
 
-**Plans and reports**
+**Research, plans and reports**
 
 | Task | What the agent does | Example request |
 |---|---|---|
 | [plan-period](tasks/plan-period.md) | Writes a plan for a day, a week or another period in Markdown, then builds it into an HTML page. | «план на сегодня» — plan for today |
 | [review-period](tasks/review-period.md) | Writes an internal review of the period with a link to evidence for each completed item. | «итоги дня» — results of the day |
 | [report-period](tasks/report-period.md) | Prepares a report and an infographic for a manager or a team. Shows designed HTML previews first, then exports the approved version; sending them is a separate step. | «отчёт за день» — daily report |
+| [analytical-note](tasks/analytical-note.md) | Researches a project question using the Minto pyramid by default: conclusion, grouped reasons, then evidence. | «аналитическая записка» — analytical note |
 | [build-page](tasks/build-page.md) | Turns a draft into one HTML file that opens offline, with fonts and styles inside, and checks links, text and layout at desktop and phone width. | used by plans and reviews |
 
 **Closing**
@@ -51,7 +52,11 @@ Repeatable work is split into 13 named tasks. You ask in your own words, and the
 | [close-workstream](tasks/close-workstream.md) | Closes one line of work after its result is accepted and records the acceptance and the open follow-ups. | «закрываем направление» — close this workstream |
 | [close-project](tasks/close-project.md) | Closes the project: final results, handover, open obligations, who supports what. | «закрываем проект» — close the project |
 
-The full method behind the tasks is in [WORKFLOW.md](WORKFLOW.md). An agent that does not load skills automatically can read it directly.
+The full method is in [WORKFLOW.md](WORKFLOW.md). An agent that does not load skills automatically can read it directly.
+
+## Analytical notes start with an answer
+
+The agent uses the Minto pyramid by default: it answers the project question first, groups the reasons, then places evidence under each reason. It distinguishes published product behavior, observations in your environment, inferences and open questions. Personal data stay out of external search queries and services. See [analytical-note](tasks/analytical-note.md).
 
 ## Reports: review the designed result
 
@@ -124,10 +129,16 @@ python tests/check_style.py
 python scripts/audit.py public . --denylist <file with your private terms>
 ```
 
-The last command searches the skill for private data before you publish a fork or a change. It finds e-mail addresses, Windows paths, private network addresses and links to non-public sites, plus the terms from your denylist. Keep the denylist in your private project, never in this repository, and look through the files yourself before publishing. When changing the skill, follow [the publication procedure](references/publishing.md): validate locally, review the exact staged diff for private data, then push only with authorization and verify the remote result.
+The last command flags common private-data patterns before you publish a fork or a change: e-mail addresses, Windows paths, private network addresses, links to non-public sites and terms from your denylist. Keep the denylist outside this repository and review the files yourself; a passing scan cannot prove the package is free of private data. Follow [the publication procedure](references/publishing.md): check locally, review the exact staged diff, publish only with authorization and verify the remote result.
 
 The scripts need Python 3.11 or newer. The method and the templates work without Python.
 
 ## License
 
 Code and templates: MIT. Bundled fonts: SIL OFL 1.1, see [assets/report-style/FONT-LICENSES.md](assets/report-style/FONT-LICENSES.md).
+
+## Contributors
+
+- [zvyagsta](https://github.com/zvyagsta) — creator and maintainer.
+- Claude — AI-assisted contributions.
+- Codex — AI-assisted contributions.

@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "project-lifecycle",
   "displayName": "Project lifecycle",
-  "version": "1.0.0",
-  "description": "Project context, decisions, materials, period plans and reviews, report and plan pages, backups and closure — as named repeatable tasks.",
+  "version": "1.1.0",
+  "description": "Project context, decisions, materials, analytical notes, period plans and reviews, report and plan pages, backups and closure — as named repeatable tasks.",
   "author": {
     "name": "zvyagsta",
     "url": "https://github.com/zvyagsta/project-lifecycle"
